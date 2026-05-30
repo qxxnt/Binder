@@ -1,5 +1,5 @@
-﻿---------------------------------------------------------------------------------------------------------
-                                        	-----Mane-----
+---------------------------------------------------------------------------------------------------------
+                                        	-----Main-----
 ------------------------------------------------------------------------------------------------------------
 ;===================================================================================
 ; Запуск от имени администратора
@@ -23,7 +23,7 @@ SetWorkingDir  %A_AppData%\ahkadminconfig
 #KeyHistory 0
 SplashTextoff
 ListLines Off
-CurrentVersion := "1.35"
+CurrentVersion := "1.36"
 
 ;===================================================================================
 ScreenWidth := A_ScreenWidth
@@ -75,7 +75,7 @@ if CurrentDateT=%CurrentDate%
             }
 ;===================================================================================
 ------------------------------------------------------------------------------------------------------------
-                                        -----Mane Ini Radial-----
+                                        -----Main Ini Radial-----
 ------------------------------------------------------------------------------------------------------------
 IniRead, Radio1Com, Settings.ini, Settings, /esp
 IniRead, Radio2Com, Settings.ini, Settings, /hidecheatinfo
@@ -139,7 +139,7 @@ if qX=ERROR
     reload
 }
 ------------------------------------------------------------------------------------------------------------
-                                    -----Mane KEY-----
+                                    -----Main KEY-----
 ------------------------------------------------------------------------------------------------------------
 ;===================================================================================
     Hotkey, %KEY1%, Off, UseErrorLevel
@@ -186,18 +186,16 @@ if qX=ERROR
         Hotkey, %KEY21%, takerep, On, UseErrorLevel
 ;===================================================================================
 ------------------------------------------------------------------------------------------------------------
-                                    	  		-----Mane GUI-----
+                                    	  		-----Main GUI-----
 ------------------------------------------------------------------------------------------------------------
 ;===================================================================================
 Gui, 2: -MaximizeBox
-Gui, 2: Show, w648 h583, Биндер для администрации Majestic RP v%CurrentVersion%
+Gui, 2: Show, w648 h375, Биндер для администрации Majestic RP v%CurrentVersion%
 Gui, 2: Color, 161A1E
 Gui, 2: Font, c0xFFFFFF
-Gui, 2: Add, Picture, x350 y150 w300 h320, %A_AppData%\ahkadminconfig\media\rules.png
-Gui, 2: Add, Picture, x10 y372 w243 h140, %A_AppData%\ahkadminconfig\media\bespolezen.png
 Gui, 2: Add, Text, x355 y14 w276 h23 +0x200 +Border +0x1, Настройки Биндера
-Gui, 2: Add, Text, x395 y513 w200 h23 +0x200 +Border +0x1, это самый крутой биндер если чо
-Gui, 2: Add, Text, x390 y560 w250 h23 +0x200, Если нашли баг или неактуалку - ds: qxxnt
+Gui, 2: Add, Text, x395 y160 w200 h23 +0x200 +Border +0x1, это самый крутой биндер если чо
+Gui, 2: Add, Text, x375 y310 w250 h23 +0x200, Если нашли баг или неактуалку - ds: sedxtive
 ;===================================================================================
 ------------------------------------------------------------------------------------------------------------
                                     		-----Левый верхний-----
@@ -230,10 +228,10 @@ Gui, 2: Add, Button, x10 y340 w243 h25 gOtv2, Ответы 2
                                     		-----Левый нижний-----
 ------------------------------------------------------------------------------------------------------------
 ;===================================================================================
-Gui, 2: Add, Button, x20 y520 w225 h27 gSaveData, Сохранить
-Gui, 2: Add, Button, x20 y490 w225 h27 gUpdateBinder, Проверить обновления
-Gui, 2: Add, Button, x130 y550 w115 h27 grelog, Перезапуск
-Gui, 2: Add, Button, x20 y550 w110 h27 gexit, Выход
+Gui, 2: Add, Button, x500 y200 w138 h28 gSaveData, Сохранить
+Gui, 2: Add, Button, x350 y200 w138 h28 gUpdateBinder, Проверить обновления
+Gui, 2: Add, Button, x500 y235 w138 h27 grelog, Перезапуск
+Gui, 2: Add, Button, x350 y235 w138 h27 gexit, Выход
 ;===================================================================================
 ------------------------------------------------------------------------------------------------------------
                                     	  -----Правый верхний-----
@@ -247,72 +245,6 @@ Gui, 2: Add, Button, x350 y120 w25 h25 gid, ID
 Gui, 2: Add, Button, x380 y120 w55 h25 gEvent, Ивент
 Gui, 2: Add, Button, x565 y120 w73 h25 gcoord, Счетчик
 Gui, 2: Add, Button, x440 y120 w120 h25 gChange, Изменения
-;===================================================================================
-------------------------------------------------------------------------------------------------------------
-                                    	  		-----Файлы-----
-------------------------------------------------------------------------------------------------------------
-;===================================================================================
-IfnotExist,%A_AppData%\ahkadminconfig\media
-{
-    FileCreateDir, %A_AppData%\ahkadminconfig\media
-    Sleep, 1500
-}
-;===================================================================================
-filesExist := true
-IfNotExist, %A_AppData%\\ahkadminconfig\\media\\ruleair.png
-    filesExist := false
-IfNotExist, %A_AppData%\\ahkadminconfig\\media\\back1.png
-    filesExist := false
-IfNotExist, %A_AppData%\\ahkadminconfig\\media\\rules.png
-    filesExist := false
-IfNotExist, %A_AppData%\\ahkadminconfig\\media\\lisiy.png
-    filesExist := false
-IfNotExist, %A_AppData%\\ahkadminconfig\\media\\bespolezen.png
-    filesExist := false
-
-if !filesExist
-{
-    Gui, 22:Show, w320 h60, Скачивание файлов
-    Gui, 22:Add, Text,, Загрузка...
-    Gui, 22:Add, Progress, vProgress w300 h20
-    UpdateProgress(0)
-    IfNotExist,%A_AppData%\ahkadminconfig\media\ruleair.png
-        {
-        URLDownloadToFile, https://i.imgur.com/a0mQueZ.png,%A_AppData%\ahkadminconfig\media\ruleair.png
-        Sleep, 1500
-        UpdateProgress(20) 
-        }
-    IfNotExist,%A_AppData%\ahkadminconfig\media\rules.png
-        {
-        URLDownloadToFile, https://i.yapx.ru/ZPDWe.png,%A_AppData%\ahkadminconfig\media\rules.png
-        Sleep, 1500
-        UpdateProgress(80)
-        }
-    IfNotExist,%A_AppData%\ahkadminconfig\media\lisiy.png
-        {
-        URLDownloadToFile, https://i.yapx.ru/ZPeWN.png,%A_AppData%\ahkadminconfig\media\lisiy.png
-        Sleep, 1500
-        UpdateProgress(80)
-        }
-  IfNotExist,%A_AppData%\ahkadminconfig\media\bespolezen.png
-        {
-        URLDownloadToFile, https://i.yapx.ru/ZPe2X.png,%A_AppData%\ahkadminconfig\media\bespolezen.png
-        Sleep, 1500
-        UpdateProgress(80)
-        }
-    IfNotExist,%A_AppData%\ahkadminconfig\media\back1.png
-        {
-        URLDownloadToFile, https://i.imgur.com/4S2kaab.png,%A_AppData%\ahkadminconfig\media\back1.png
-        Sleep, 1500
-        UpdateProgress(100)
-        Sleep, 1500
-        Reload
-        }
-    UpdateProgress(progress) {
-    GuiControl, 22:, Progress, %progress%
-    }
-    Gui, 22:Destroy
-}
 ;===================================================================================
 ------------------------------------------------------------------------------------------------------------
                                 	    -----Counter-----
@@ -359,7 +291,7 @@ update1:
 return
 ;===================================================================================
 ------------------------------------------------------------------------------------------------------------
-                                	-----ManeSaveData-----
+                                	-----MainSaveData-----
 ------------------------------------------------------------------------------------------------------------
 ;===================================================================================
     SaveData:
@@ -475,10 +407,9 @@ Hotkeys:
     ; Между текстом - y25, Между кнопками - y25
 ;=================================================================================== 
     Gui, 11: -MaximizeBox
-    Gui, 11: Show, w608 h660, Горячие клавиши
+    Gui, 11: Show, w608 h550, Горячие клавиши
     Gui, 11: Color, 161A1E
     Gui, 11: Font, c0xFFFFFF
-    Gui, 11: Add, Picture, x300 y300 w300 h320, %A_AppData%\ahkadminconfig\media\lisiy.png
     Gui, 11: Add, Text, x48 y14 w160 h23 +0x200 +Border +0x1, Взаимодействие с игроком
     Gui, 11: Add, Text, x97 y53 w120 h14 +0x200, ТП к игроку
     Gui, 11: Add, Hotkey, x40 y50 w48 h21 vHot1, %KEY1%
@@ -503,33 +434,27 @@ Hotkeys:
     Gui, 11: Add, Text, x97 y320 w120 h14 +0x200, Быстрый ответ
     Gui, 11: Add, Hotkey, x40 y317 w48 h21 vHot21, %KEY21%
 ;===================================================================================
-    Gui, 11: Add, Text, x48 y389 w160 h23 +0x200 +Border +0x1, Основные функции
-    Gui, 11: Add, Text, x97 y428 w110 h14 +0x200, Пресет
-    Gui, 11: Add, Hotkey, x40 y425 w48 h21 vHot8, %KEY8%
-    Gui, 11: Add, Text, x97 y453 w90 h14 +0x200,  /chide(on\off)
-    Gui, 11: Add, Hotkey, x40 y450 w48 h21 vHot17, %KEY17%
-    Gui, 11: Add, Text, x97 y478 w90 h14 +0x200, /zzdebug(on\off)
-    Gui, 11: Add, Hotkey, x40 y475 w48 h21 vHot18, %KEY18%
-    Gui, 11: Add, Text, x97 y503 w90 h14 +0x200, /esp(on\off)
-    Gui, 11: Add, Hotkey, x40 y500 w48 h21 vHot19, %KEY19%
-    Gui, 11: Add, Text, x97 y528 w90 h14 +0x200, /dl(on\off)
-    Gui, 11: Add, Hotkey, x40 y525 w48 h21 vHot20, %KEY20%
-    Gui, 11: Add, Text, x97 y553 w120 h14 +0x200, /gm(on\off)
-    Gui, 11: Add, Hotkey, x40 y550 w48 h21 vHot16, %KEY16%
+    Gui, 11: Add, Text, x48 y354 w160 h23 +0x200 +Border +0x1, Основные функции
+    Gui, 11: Add, Text, x97 y393 w110 h14 +0x200, Пресет
+    Gui, 11: Add, Hotkey, x40 y390 w48 h21 vHot8, %KEY8%
+    Gui, 11: Add, Text, x97 y418 w90 h14 +0x200,  /chide (on\off)
+    Gui, 11: Add, Hotkey, x40 y415 w48 h21 vHot17, %KEY17%
+    Gui, 11: Add, Text, x97 y443 w90 h14 +0x200, /zzdebug (on\off)
+    Gui, 11: Add, Hotkey, x40 y440 w48 h21 vHot18, %KEY18%
+    Gui, 11: Add, Text, x97 y468 w90 h14 +0x200, /esp (on\off)
+    Gui, 11: Add, Hotkey, x40 y465 w48 h21 vHot19, %KEY19%
+    Gui, 11: Add, Text, x97 y493 w90 h14 +0x200, /dl (on\off)
+    Gui, 11: Add, Hotkey, x40 y490 w48 h21 vHot20, %KEY20%
+    Gui, 11: Add, Text, x97 y518 w120 h14 +0x200, /gm (on\off)
+    Gui, 11: Add, Hotkey, x40 y515 w48 h21 vHot16, %KEY16%
 ;===================================================================================
-    Gui, 11: Add, Text, x300 y14 w105 h23 +0x200 +Border +0x1, Памятки
-    Gui, 11: Add, Text, x349 y57 w120 h14 +0x200, Правила AirDrop'a
-    Gui, 11: Add, Hotkey, x292 y54 w48 h21 vHot5, %KEY5% ; Памятка AirDrop
-    Gui, 11: Add, Text, x349 y82 w90 h14 +0x200, Памятка
-    Gui, 11: Add, Hotkey, x292 y79 w48 h21 vHot15, %KEY15% ; Памятка
-;===================================================================================
-    Gui, 11: Add, Text, x300 y110 w130 h23 +0x200 +Border +0x1, Взаимодействие с ТС
-    Gui, 11: Add, Text, x349 y153 w120 h14 +0x200, Запустить двигатель
-    Gui, 11: Add, Hotkey, x292 y150 w48 h21 vHot4, %KEY4%
-    Gui, 11: Add, Text, x349 y178 w120 h14 +0x200, Удалить ТС
-    Gui, 11: Add, Hotkey, x292 y175 w48 h21 vHot10, %KEY10%
-    Gui, 11: Add, Text, x349 y203 w120 h14 +0x200, ТП ТС
-    Gui, 11: Add, Hotkey, x292 y200 w48 h21 vHot11, %KEY11%
+    Gui, 11: Add, Text, x300 y14 w130 h23 +0x200 +Border +0x1, Взаимодействие с ТС
+    Gui, 11: Add, Text, x349 y57 w120 h14 +0x200, Запустить двигатель
+    Gui, 11: Add, Hotkey, x292 y57 w48 h21 vHot4, %KEY4%
+    Gui, 11: Add, Text, x349 y82 w90 h14 +0x200, Удалить ТС
+    Gui, 11: Add, Hotkey, x292 y82 w48 h21 vHot10, %KEY10%
+    Gui, 11: Add, Text, x349 y107 w120 h14 +0x200, ТП ТС
+    Gui, 11: Add, Hotkey, x292 y107 w48 h21 vHot11, %KEY11%
 ;===================================================================================
 ; vHot22, %KEY22% - След.
 ;===================================================================================
@@ -544,9 +469,9 @@ Hotkeys:
         MsgBox, 0, Горячие клавиши, Сброс отменен.
     }
     }
-    Gui, 11: Add, Button, x315 y637 w60 h20 gButtonreset, Сброс
-    Gui, 11: Add, Button, x475 y637 w60 h20 gSaveData7, Сохранить
-    Gui, 11: Add, Button, x540 y637 w60 h20 gGuishka11, Отменить
+    Gui, 11: Add, Button, x315 y518 w60 h20 gButtonreset, Сброс
+    Gui, 11: Add, Button, x475 y518 w60 h20 gSaveData7, Сохранить
+    Gui, 11: Add, Button, x540 y518 w60 h20 gGuishka11, Отменить
 return
 ;===================================================================================
 coord:
@@ -2283,7 +2208,6 @@ return
 
 ruleair1:
     Gui 10:+LastFound +AlwaysOnTop -Caption +ToolWindow
-    Gui, 10:Add, Picture, w1542 h669 , %A_AppData%\ahkadminconfig\media\ruleair.png
 Return
 ;===================================================================================
 ------------------------------------------------------------------------------------------------------------
@@ -2375,6 +2299,61 @@ MemoBlock:
 return
 ;===================================================================================
 Change:
-    MsgBox, 8192, Обновления, от 05.06.25`n`n- Полностью актуализирована информация внутри биндера`n- Обновлены ответы (пунктуация и грамматика)`n- При использовании .ку, .ща, .да, .нет и прочих команд с приветствием, к счетчику репортов прибавляется 1`n- Добавлена актуальная информацию по прошлым и нынешнему БП (крепление на мотик, GPS трекер, фляжки, стимуляторы, магазины и прочее)`n- Новая быстрая команда .ооск для ООС Оскорблений`n`n Если где-то увидели ошибку или хотите предложить что-то своё (мне очень интересно) - ds: qxxnt
+    MsgBox, 8192, Обновления, от 30.05.2026`n`n- Минимизирован интерфейс`n- Обновлены ответы (пунктуация и грамматика)`n- Убраны неактуальные разделы вроде памятки по AirDrop`n- Добавлена кнопка обновлений, через которую можно обновить биндер до актуализированной мною версии`n`nЕсли где-то увидели ошибку или хотите предложить что-то своё (мне очень интересно) - ds: sedxtive
+return
+;===================================================================================
+UpdateBinder:
+
+VersionURL := "https://raw.githubusercontent.com/qxxnt/Binder/refs/heads/main/version.txt"
+ScriptURL := "https://raw.githubusercontent.com/qxxnt/Binder/refs/heads/main/Majestic%20Admin%20Binder.ahk"
+
+TempVersion := A_Temp "\binder_version.txt"
+
+URLDownloadToFile, %VersionURL%, %TempVersion%
+
+if !FileExist(TempVersion)
+{
+    MsgBox, 16, Ошибка, Не удалось проверить обновления.
+    return
+}
+
+FileRead, RemoteVersion, %TempVersion%
+RemoteVersion := Trim(RemoteVersion)
+
+if (RemoteVersion = CurrentVersion)
+{
+    MsgBox, 64, Обновление, У вас установлена последняя версия.
+    return
+}
+
+MsgBox, 4, Обновление, Найдена версия %RemoteVersion%. Установить?
+IfMsgBox No
+    return
+
+TempScript := A_Temp "\binder_update.ahk"
+
+URLDownloadToFile, %ScriptURL%, %TempScript%
+
+if !FileExist(TempScript)
+{
+    MsgBox, 16, Ошибка, Не удалось скачать обновление.
+    return
+}
+
+BatFile := A_Temp "\binder_update.bat"
+
+FileDelete, %BatFile%
+
+FileAppend,
+(
+@echo off
+ping 127.0.0.1 -n 3 > nul
+copy /Y "%TempScript%" "%A_ScriptFullPath%"
+start "" "%A_ScriptFullPath%"
+), %BatFile%
+
+Run, %BatFile%
+ExitApp
+
 return
 ;===================================================================================
